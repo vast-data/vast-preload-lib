@@ -1,0 +1,19 @@
+Name:           __NAME__
+Version:        __VERSION__
+Release:        1
+Summary:        VAST LD_PRELOAD Library
+License:        GPLv3+
+
+%description
+LD_PRELOAD library to inject O_DIRECT into file I/O.
+
+#%prep
+#%setup
+#%build
+#%install
+
+%clean
+rm -rf %{buildroot}
+
+%files
+/usr/lib/lib__NAME__.so

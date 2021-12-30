@@ -1,0 +1,13 @@
+Source: __NAME__
+Maintainer: Sven Breuner <sven@vastdata.com>
+Build-Depends: debhelper (>= 8.0.0)
+Standards-Version: 3.9.3
+Section: utils
+
+Package: __NAME__
+Priority: optional
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: VAST LD_PRELOAD Library
+ LD_PRELOAD library to inject O_DIRECT into file I/O.
+
