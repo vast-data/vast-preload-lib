@@ -153,12 +153,15 @@ void InjectionTk::ejectAfterEinval(int fd)
 	if(!fdFound)
 		return; // fd not in store, so not tracked by us and thus nothing to do
 
+	int flags = fcntl(fd, F_GETFL);
+
+	if(!(flags & O_DIRECT) )
+		return; // O_DIRECT not set, so nothing to do
+
 	if(libLogTopics & ENV_LOG_TOPIC_INJECT)
 		log_fprintf(stderr, LOG_PREFIX "Removing injected O_DIRECT after EINVAL error. "
 			"fd: %d; path: %s\n",
 			fd, removalPath.c_str() );
-
-	int flags = fcntl(fd, F_GETFL);
 
 	fcntl(fd, F_SETFL, flags & ~O_DIRECT);
 }

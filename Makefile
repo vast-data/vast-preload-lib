@@ -5,7 +5,7 @@
 LIB_NAME           ?= vastpreload
 LIB_VER_MAJOR      ?= 1
 LIB_VER_MINOR      ?= 0
-LIB_VER_PATCHLEVEL ?= 1
+LIB_VER_PATCHLEVEL ?= 3
 LIB_VERSION        ?= $(LIB_VER_MAJOR).$(LIB_VER_MINOR)-$(LIB_VER_PATCHLEVEL)
 LIB                ?= $(BIN_PATH)/lib$(LIB_NAME).so
 LIB_UNSTRIPPED     ?= $(BIN_PATH)/lib$(LIB_NAME)-unstripped.so
