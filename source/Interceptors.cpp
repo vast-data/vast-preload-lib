@@ -6,7 +6,7 @@
  * 		$ man ld-linux # see section LD_DEBUG
  * 		$ export LD_DEBUG=symbols
  * 		$ export LD_DEBUG_OUTPUT=myoutput.txt
- * 		$ ls -lh /some/dir/*
+ * 		$ ls -lh /some/dir
  * 		$ unset LD_DEBUG
  * 		Now myoutput.txt.PID contains symbol lookups.
  * - function signatures in system includes, e.g.:
