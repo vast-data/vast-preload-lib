@@ -122,7 +122,7 @@ void InjectionTk::injectAfterOpenat(int dirfd, int fd, std::string path, int fla
 			{
 				log_fprintf(stderr,
 					LOG_PREFIX "Skipping open inject due to openat dirfd not found in store: "
-					"dirfd: %d; fd: %d; path: %s\n", dirfd, fd, path);
+					"dirfd: %d; fd: %d; path: %s\n", dirfd, fd, path.c_str());
 
 				return;
 			}
@@ -181,4 +181,3 @@ void InjectionTk::ejectBeforeClose(int fd)
 
 	fdStore->removeFD(fd);
 }
-
