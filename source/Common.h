@@ -2,6 +2,7 @@
 #define COMMON_H_
 
 #include <cstdarg>
+#include <cstdint>
 #include <cstring>
 #include <dlfcn.h>
 #include <iostream>
