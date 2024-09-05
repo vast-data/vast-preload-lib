@@ -70,6 +70,10 @@ static __attribute__((destructor)) void uninitlib(void)
 	if(libLogTopics & ENV_LOG_TOPIC_INIT)
 		fprintf(stderr, LOG_PREFIX "Uninit called\n");
 
+	/* set back to false to prevent access to data structures when shared libs get unloaded during
+	 	 process shutdown. */
+	initDone = false;
+
 	SAFE_DELETE(pathMatchStore);
 	SAFE_DELETE(fdStore);
 

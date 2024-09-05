@@ -5,7 +5,7 @@
 LIB_NAME           ?= vastpreload
 LIB_VER_MAJOR      ?= 1
 LIB_VER_MINOR      ?= 0
-LIB_VER_PATCHLEVEL ?= 3
+LIB_VER_PATCHLEVEL ?= 5
 LIB_VERSION        ?= $(LIB_VER_MAJOR).$(LIB_VER_MINOR)-$(LIB_VER_PATCHLEVEL)
 LIB                ?= $(BIN_PATH)/lib$(LIB_NAME).so
 LIB_UNSTRIPPED     ?= $(BIN_PATH)/lib$(LIB_NAME)-unstripped.so
@@ -171,8 +171,9 @@ deb: | prepare-buildroot
 	sed -i "s/__NAME__/$(LIB_NAME)/" $(PACKAGING_PATH)/BUILDROOT/debian/control
 	
 	cd $(PACKAGING_PATH)/BUILDROOT && \
-		EDITOR=/bin/true VISUAL=/bin/true debchange --create --package $(LIB_NAME) --urgency low \
-			--noquery --newversion "$(LIB_VER_MAJOR).$(LIB_VER_MINOR).$(LIB_VER_PATCHLEVEL)" \
+		EDITOR=/bin/true VISUAL=/bin/true DEBEMAIL=vastpreload@localhost.localdomain debchange \
+			--create --package $(LIB_NAME) --urgency low --noquery \
+			--newversion "$(LIB_VER_MAJOR).$(LIB_VER_MINOR).$(LIB_VER_PATCHLEVEL)" \
 			"Custom package build."
 	
 	cd $(PACKAGING_PATH)/BUILDROOT && \
