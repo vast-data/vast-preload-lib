@@ -1,3 +1,4 @@
+#define BOOST_FILESYSTEM_VERSION 3
 #include <boost/filesystem.hpp>
 #include <fcntl.h>
 #include "InjectionTk.h"
@@ -32,7 +33,7 @@ void InjectionTk::injectAfterOpen(int fd, std::string path, int flags)
 	{ // normalize path (e.g. remove ".." and "//")
 		boost::filesystem::path pathObj(path);
 
-		std::string pathObjNormalizedStr = pathObj.normalize().string();
+		std::string pathObjNormalizedStr = pathObj.lexically_normal().string();
 
 		// .normalize() leaves a trailing slashdot ("/.") when path ended with "/", so remove that
 		if( (pathObjNormalizedStr.length() > 2) &&
