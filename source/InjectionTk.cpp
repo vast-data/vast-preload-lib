@@ -1,4 +1,3 @@
-#define BOOST_FILESYSTEM_VERSION 3
 #include <boost/filesystem.hpp>
 #include <fcntl.h>
 #include "InjectionTk.h"
@@ -36,6 +35,9 @@ void InjectionTk::injectAfterOpen(int fd, std::string path, int flags)
 		std::string pathObjNormalizedStr = pathObj.lexically_normal().string();
 
 		// .normalize() leaves a trailing slashdot ("/.") when path ended with "/", so remove that
+		/* note: trailing slashdot is due to BOOST_FILESYSTEM_VERSION=3 def in Makefile. if this
+		 * ever gets changed to BOOST_FILESYSTEM_VERSION >3 or to C++17 std::filesystem then the
+		 * trailing slash remains but the trailing dot goes away. */
 		if( (pathObjNormalizedStr.length() > 2) &&
 			('/' == pathObjNormalizedStr[pathObjNormalizedStr.length() -2] ) &&
 			('.' == pathObjNormalizedStr[pathObjNormalizedStr.length() -1] ) )

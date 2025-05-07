@@ -21,7 +21,7 @@ CC                 ?= gcc
 CXX                ?= g++
 STRIP              ?= strip
 
-CXXFLAGS_BOOST     ?= -DBOOST_SPIRIT_THREADSAFE
+CXXFLAGS_BOOST     ?= -DBOOST_SPIRIT_THREADSAFE -DBOOST_FILESYSTEM_VERSION=3
 LDFLAGS_BOOST      ?= -lboost_filesystem
 
 CCFLAGS_COMMON   = -DLIB_NAME=\"$(LIB_NAME)\" -DLIB_VERSION=\"$(LIB_VERSION)\" $(CXXFLAGS_BOOST) \
